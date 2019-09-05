@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BuildingForm.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuildingForm.Controllers
@@ -10,22 +11,32 @@ namespace BuildingForm.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(Repostory.Products);
         }
 
 
-
+        [HttpGet]
 
         public IActionResult Create()
         {
             return View();
         }
-    
 
 
 
 
-    public IActionResult Search()
+        [HttpPost]
+
+        public IActionResult Create( Product model, string name)
+        {
+
+            return View();
+        }
+
+
+        [HttpGet]
+
+    public IActionResult Search(string q)
     {
         return View();
     }

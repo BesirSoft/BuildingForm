@@ -1,14 +1,53 @@
-﻿
+﻿@model IEnumerable<BuildingForm.Models.Product>
+
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<br />
+<div class="container">
+
+    <table class="table table-sm table-bordered">
+        <thead class="bg-primary text-white">
+            <tr>
+
+                <th scope="col">Nmeme</th>
+                <th scope="col">Price</th>
+                <th scope="col">İsaprowed</th>
+                <th scope="col">Detay</th>
+            </tr>
+        </thead>
+        <tbody>
 
 
-<h1>Index</h1>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>@item.IsAprowed</td>
+                    <td>
+
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id"> Detay</a>
+
+
+                    </td>
+
+
+                </tr>
+
+
+            }
 
 
 
+        </tbody>
 
 
-<div>beşir aydemir</div>
+    </table>
+
+</div>

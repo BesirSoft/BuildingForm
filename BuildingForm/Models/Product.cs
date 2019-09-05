@@ -15,7 +15,7 @@ namespace BuildingForm.Models
 
         public decimal Price { get; set; }
 
-        public bool İsAprowed { get; set; }
+        public bool IsAprowed { get; set; }
 
     }
 }

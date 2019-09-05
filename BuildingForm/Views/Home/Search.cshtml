@@ -1,25 +1,28 @@
 ﻿
-@{
-    ViewData["Title"] = "Search";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h1>Search</h1>
-
-<div class="container">
-    <form action="/Home/Search" method="get">
+@model    BuildingForm.Models.Product
 
 
-        <div class="form-group">
+    @{
+        ViewData["Title"] = "Search";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
-            <label for="q">arama </label>
-            <input type="text" name="q" value="" id="q" class="form-control" />
+    <h1>Search</h1>
+
+    <div class="container">
+        <form action="/Home/Search" method="get">
 
 
-        </div>
- 
-        <input type="submit" name="q" value="submit" id="q" class="form-control" />
+            <div class="form-group">
+
+                <label for="q">arama </label>
+                <input type="text" name="q" value="" id="q" class="form-control" />
 
 
-    </form>
-</div>
+            </div>
+
+            <input type="submit" name="q" value="submit" id="q" class="form-control" />
+
+
+        </form>
+    </div>
