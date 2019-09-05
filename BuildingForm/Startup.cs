@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 
 namespace BuildingForm
 {
@@ -31,10 +33,18 @@ namespace BuildingForm
             //{
             //    await context.Response.WriteAsync("Hello World!");
             //});
-
+           
+            
+            //Startap dosyası istenilen Klasordeki statik dosyaya erişmek için
                 app.UseMvc(routes => {
                 app.UseStaticFiles();
-
+                    app.UseStaticFiles(new StaticFileOptions
+                    {
+                        FileProvider = new PhysicalFileProvider(
+                         Path.Combine(Directory.GetCurrentDirectory(), "bootstrap")),
+                          RequestPath = "/StaticFiles"
+                    });
+                
 
                  routes.MapRoute(
                 name: "default",
