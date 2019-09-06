@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BuildingForm.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BuildingForm.Controllers
 {
@@ -19,6 +20,9 @@ namespace BuildingForm.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Category = new SelectList(new List<string>() { "Telefon", "Tablet", "Bilgissayr", "Oyuncak", "Kulaklık" });
+
+
             return View();
         }
 
@@ -29,9 +33,18 @@ namespace BuildingForm.Controllers
 
         public IActionResult Create( Product model, string name)
         {
-            Repostory.AddProduct(model);
 
-            return RedirectToAction("index");        }
+
+            if (!ModelState.IsValid)
+            {
+                Repostory.AddProduct(model);
+
+                return View();
+            }
+
+            return RedirectToAction("index");
+           
+}
 
 
         [HttpGet]
@@ -45,15 +58,6 @@ namespace BuildingForm.Controllers
             }
             else
             {
-
-
-
-
-              
-
-
-
-
 
 
                 var list = Repostory.Products.Where(p => p.Name.Contains(q) || p.Description.Contains(q));
