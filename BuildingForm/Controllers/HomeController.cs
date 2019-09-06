@@ -37,11 +37,11 @@ namespace BuildingForm.Controllers
 
             if (!ModelState.IsValid)
             {
-                Repostory.AddProduct(model);
+       
 
                 return View();
             }
-
+            Repostory.AddProduct(model);
             return RedirectToAction("index");
            
 }
@@ -67,6 +67,42 @@ namespace BuildingForm.Controllers
 
     
     }
+
+
+
+        [HttpGet]
+
+        public IActionResult Edit(int id)
+        {
+
+            ViewBag.Category = new SelectList(new List<string>() { "Telefon", "Tablet", "Bilgissayr", "Oyuncak", "Kulaklık" });
+            var model = Repostory.Products.Where(p => p.Id == id).FirstOrDefault();
+
+            //var list = Repostory.Products.Where(p => p.Name.Contains(q) || p.Description.Contains(q));
+            return View(model);
+
+
+
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product q)
+        {
+
+
+            ViewBag.Category = new SelectList(new List<string>() { "Telefon", "Tablet", "Bilgissayr", "Oyuncak", "Kulaklık" });
+
+            //var list = Repostory.Products.Where(p => p.Name.Contains(q) || p.Description.Contains(q));
+            return View();
+
+
+
+
+        }
+
+
+
 
 
 
