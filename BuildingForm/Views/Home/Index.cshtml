@@ -15,6 +15,9 @@
 
                 <th scope="col">Nmeme</th>
                 <th scope="col">Price</th>
+
+                <th scope="col">Descriptiom</th>
+                <th scope="col">Category</th>
                 <th scope="col">İsaprowed</th>
                 <th scope="col">Detay</th>
             </tr>
@@ -25,20 +28,40 @@
             @foreach (var item in Model)
             {
 
-                <tr>
+            <tr>
 
-                    <td>@item.Name</td>
-                    <td>@item.Price</td>
-                    <td>@item.IsAprowed</td>
-                    <td>
-
-                        <a class="btn btn-danger" asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id"> Detay</a>
-
-
-                    </td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Description</td>
+                <td>@item.Catagory</td>
+                <td>
 
 
-                </tr>
+                    @if (@item.IsAprowed)
+                    {
+                        <span class="badge badge-pill badge-success">Onaylı</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill badge-danger">Onaylanmadı</span>
+
+                    }
+
+
+
+
+                </td>
+                <td>
+
+                    @*<a class="btn btn-danger" asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id"> Detay</a>*@
+
+                    <a class="btn btn-danger" href="/Home/Edit/@item.Id">Düzenle</a>
+
+
+                </td>
+
+
+            </tr>
 
 
             }
